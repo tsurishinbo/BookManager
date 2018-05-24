@@ -5,9 +5,11 @@
  */
 package jp.co.stcinc.bookmanager.facade;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import jp.co.stcinc.bookmanager.entity.TBook;
 
 /**
@@ -27,6 +29,13 @@ public class TBookFacade extends AbstractFacade<TBook> {
 
     public TBookFacade() {
         super(TBook.class);
+    }
+    
+    @Override
+    public List<TBook> findAll() {
+        Query query = em.createNamedQuery("TBook.findAll");
+        List<TBook> bookList = query.getResultList();
+        return bookList;
     }
     
 }

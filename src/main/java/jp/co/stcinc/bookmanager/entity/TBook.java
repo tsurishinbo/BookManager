@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,14 +31,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "t_book")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TBook.findAll", query = "SELECT t FROM TBook t")
+    @NamedQuery(name = "TBook.findAll", query = "SELECT t FROM TBook t ORDER BY t.id")
     , @NamedQuery(name = "TBook.findById", query = "SELECT t FROM TBook t WHERE t.id = :id")
     , @NamedQuery(name = "TBook.findByTitle", query = "SELECT t FROM TBook t WHERE t.title = :title")
     , @NamedQuery(name = "TBook.findByAuthor", query = "SELECT t FROM TBook t WHERE t.author = :author")
     , @NamedQuery(name = "TBook.findByGenre", query = "SELECT t FROM TBook t WHERE t.genre = :genre")
     , @NamedQuery(name = "TBook.findByStartDate", query = "SELECT t FROM TBook t WHERE t.startDate = :startDate")
     , @NamedQuery(name = "TBook.findByEndDate", query = "SELECT t FROM TBook t WHERE t.endDate = :endDate")
-    , @NamedQuery(name = "TBook.findByRank", query = "SELECT t FROM TBook t WHERE t.rank = :rank")
+    , @NamedQuery(name = "TBook.findByRating", query = "SELECT t FROM TBook t WHERE t.rating = :rating")
     , @NamedQuery(name = "TBook.findByImpressions", query = "SELECT t FROM TBook t WHERE t.impressions = :impressions")})
 public class TBook implements Serializable {
 
@@ -68,9 +69,9 @@ public class TBook implements Serializable {
     @Column(name = "end_date")
     @Temporal(TemporalType.DATE)
     private Date endDate;
-    @Column(name = "rank")
-    private Integer rank;
-    @Size(max = 200)
+    @Column(name = "rating")
+    private Integer rating;
+    @Size(max = 2147483647)
     @Column(name = "impressions")
     private String impressions;
 
@@ -136,12 +137,12 @@ public class TBook implements Serializable {
         this.endDate = endDate;
     }
 
-    public Integer getRank() {
-        return rank;
+    public Integer getRating() {
+        return rating;
     }
 
-    public void setRank(Integer rank) {
-        this.rank = rank;
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
     public String getImpressions() {

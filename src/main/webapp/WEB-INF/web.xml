@@ -4,9 +4,15 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+    <!-- PrimeFacesのテーマ -->
     <context-param>
 	<param-name>primefaces.THEME</param-name>
-	<param-value>afterdark</param-value>
+	<param-value>bluesky</param-value>
+    </context-param>
+    <!-- サブミットされた値が空文字であった場合に，JSF内部でnullに変換する -->
+    <context-param>
+        <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+        <param-value>true</param-value>
     </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

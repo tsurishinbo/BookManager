@@ -5,10 +5,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Book List</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form id="form1">
             <p:dataTable id="bookTable" var="book" value="#{indexView.bookList}">
                 <f:facet name="header">Book List</f:facet>
                 <p:column headerText="ID">
@@ -24,20 +24,26 @@
                     <h:outputText value="#{book.genre}" />
                 </p:column>
                 <p:column headerText="開始日">
-                    <h:outputText value="#{book.startDate}" />
+                    <h:outputText value="#{book.startDate}">
+                        <f:convertDateTime pattern="yyyy/MM/dd" locale="ja" timeZone="JST" />
+                    </h:outputText>
                 </p:column>
                 <p:column headerText="終了日">
-                    <h:outputText value="#{book.endDate}" />
+                    <h:outputText value="#{book.endDate}">
+                        <f:convertDateTime pattern="yyyy/MM/dd" locale="ja" timeZone="JST" />
+                    </h:outputText>
                 </p:column>
                 <p:column headerText="評価">
-                    <h:outputText value="#{book.rank}" />
+                    <p:rating value="#{book.rating}" readonly="true" />
                 </p:column>
                 <p:column>
-                    <p:commandButton icon="ui-icon-search" title="View" action="#{indexView.doEdit()}">
+                    <p:commandButton type="submit" ajax="false" icon="ui-icon-search" action="#{indexView.doEdit()}">
                         <f:setPropertyActionListener value="#{book}" target="#{indexView.selectedBook}" />
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
+            <p:separator />
+            <p:commandButton type="submit" value="新規追加" ajax="false" action="#{indexView.doAdd()}" />
         </h:form>
     </h:body>
 </html>

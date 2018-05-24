@@ -1,7 +1,6 @@
 package jp.co.stcinc.bookmanager.view;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -17,32 +16,34 @@ import lombok.Setter;
  *
  * @author kageyamay
  */
-@Named(value = "indexView")
+@Named(value = "editView")
 @ViewScoped
-public class IndexView implements Serializable {
+public class EditView implements Serializable {
 
     @Getter @Setter
-    private List<TBook> bookList;
-    
-    @Getter @Setter
-    private TBook selectedBook;
+    private TBook editBook;
     
     @EJB
     private TBookFacade tBookFacade;
     
     @PostConstruct
     public void init() {
-        bookList = tBookFacade.findAll();
-    }
-    
-    public String doEdit() {
         Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-        flash.put("book", selectedBook);
-        return "edit.xhtml?faces-redirect=true";
+        editBook = (TBook)flash.get("book");
+    }
+
+    public String doUpdate() {
+        tBookFacade.edit(editBook);
+        return "index.xhtml?faces-redirect=true";
     }
     
-    public String doAdd() {
-        return "regist.xhtml?faces-redirect=true";
+    public String doDelete() {
+        tBookFacade.remove(editBook);
+        return "index.xhtml?faces-redirect=true";
     }
     
+    public String doReturn() {
+        return "index.xhtml?faces-redirect=true";
+    }
+
 }

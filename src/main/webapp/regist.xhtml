@@ -5,52 +5,48 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Book Edit</title>
-        <h:outputScript library="js" name="calendar_locale.js" />
+        <title>Book Regist</title>
     </h:head>
     <h:body>
         <h:form id="form1">
             <p:panelGrid columns="2">
-                <p:outputLabel for="id" value="ID:" />
-                <h:outputText id="id" value="#{editView.editBook.id}" />
                 <p:outputLabel for="title" value="タイトル:" />
                 <h:panelGroup>
-                    <p:inputText id="title" value="#{editView.editBook.title}" />
+                    <p:inputText id="title" value="#{registView.newBook.title}" />
                     <p:message for="title" />
                 </h:panelGroup>
                 <p:outputLabel for="author" value="著者名:" />
                 <h:panelGroup>
-                    <p:inputText id="author" value="#{editView.editBook.author}" />
+                    <p:inputText id="author" value="#{registView.newBook.author}" />
                     <p:message for="author" />
                 </h:panelGroup>
                 <p:outputLabel for="genre" value="ジャンル:" />
                 <h:panelGroup>
-                    <p:inputText id="genre" value="#{editView.editBook.genre}" />
+                    <p:inputText id="genre" value="#{registView.newBook.genre}" />
                     <p:message for="genre" />
                 </h:panelGroup>
                 <p:outputLabel for="start_date" value="開始日:" />
                 <h:panelGroup>
-                    <p:calendar id="start_date" value="#{editView.editBook.startDate}" locale="ja" pattern="yyyy/MM/dd">
+                    <p:calendar id="start_date" value="#{registView.newBook.startDate}" locale="ja" pattern="yyyy/MM/dd">
                         <f:convertDateTime pattern="yyyy/MM/dd" locale="ja" timeZone="JST" />
                     </p:calendar>
                     <p:message for="start_date" />
                 </h:panelGroup>
                 <p:outputLabel for="end_date" value="終了日:" />
                 <h:panelGroup>
-                    <p:calendar id="end_date" value="#{editView.editBook.endDate}" locale="ja" pattern="yyyy/MM/dd">
+                    <p:calendar id="end_date" value="#{registView.newBook.endDate}" locale="ja" pattern="yyyy/MM/dd">
                         <f:convertDateTime pattern="yyyy/MM/dd" locale="ja" timeZone="JST" />
                     </p:calendar>
                     <p:message for="end_date" />
                 </h:panelGroup>
                 <p:outputLabel for="rating" value="評価:" />
-                <p:rating id="rating" value="#{editView.editBook.rating}" cancel="false" />
+                <p:rating id="rating" value="#{registView.newBook.rating}" cancel="false" />
                 <p:outputLabel for="impressions" value="感想:" />
-                <p:inputTextarea id="impressions" value="#{editView.editBook.impressions}" cols="50" rows="5" />
+                <p:inputTextarea id="impressions" value="#{registView.newBook.impressions}" cols="50" rows="5" />
             </p:panelGrid>
             <p:separator />
-            <p:commandButton type="submit" value="更新" ajax="false" action="#{editView.doUpdate()}" />
-            <p:commandButton type="submit" value="削除" ajax="false" action="#{editView.doDelete()}" />
-            <p:commandButton type="submit" value="戻る" ajax="false" immediate="true" action="#{editView.doReturn()}" />
+            <p:commandButton type="submit" value="登録" ajax="false" action="#{registView.doRegist()}" />
+            <p:commandButton type="submit" value="戻る" ajax="false" immediate="true" action="#{registView.doReturn()}" />
         </h:form>
     </h:body>
 </html>
