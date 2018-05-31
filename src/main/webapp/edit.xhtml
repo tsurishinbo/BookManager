@@ -49,9 +49,8 @@
             </p:panelGrid>
             <p:separator />
             <p:commandButton type="submit" value="更新" ajax="false" action="#{editView.doUpdate()}" />
-            <p:commandButton type="submit" value="削除" ajax="false" action="#{editView.doDelete()}" />
+            <p:commandButton type="submit" value="削除" ajax="false" immediate="true" action="#{editView.doDelete()}" />
             <p:commandButton type="submit" value="戻る" ajax="false" immediate="true" action="#{editView.doReturn()}" />
         </h:form>
     </h:body>
 </html>
-
