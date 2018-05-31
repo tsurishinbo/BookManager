@@ -6,8 +6,8 @@
     </context-param>
     <!-- PrimeFacesのテーマ -->
     <context-param>
-	<param-name>primefaces.THEME</param-name>
-	<param-value>bluesky</param-value>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>bluesky</param-value>
     </context-param>
     <!-- サブミットされた値が空文字であった場合に，JSF内部でnullに変換する -->
     <context-param>
